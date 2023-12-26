@@ -4,10 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main',
-			credentialsId: 'jenkins',
-			url: 'git@github.com:Denskerz/first-blog.git'
-		sh "ls -la"
+                checkout scm
       }
         }
 
