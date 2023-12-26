@@ -4,8 +4,11 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Denskerz/first-blog.git'
-            }
+                git branch: 'main',
+			credentialsId: 'jenkins',
+			url: 'git@github.com:Denskerz/first-blog.git'
+		sh "ls -la"
+      }
         }
 
         stage('Build') {
