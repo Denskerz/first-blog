@@ -13,8 +13,8 @@ pipeline {
                 script {
 		    sh 'pip3 --version'
                     sh 'pip3 install -r requirements.txt'
-                    sh 'python manage.py migrate'
-                    sh 'python manage.py collectstatic --noinput'
+                    sh 'python3 manage.py migrate'
+                    sh 'python3 manage.py collectstatic --noinput'
                 }
             }
         }
@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                    
-                    sh 'python manage.py test'
+                    sh 'python3 manage.py test'
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh 'python manage.py runserver'
+                    sh 'python3 manage.py runserver'
                 }
             }
         }
