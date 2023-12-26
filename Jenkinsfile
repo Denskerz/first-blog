@@ -11,11 +11,9 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    docker.image('python:3.9').inside {
-                        sh 'pip install -r requirements.txt'
-                        sh 'python manage.py migrate'
-                        sh 'python manage.py collectstatic --noinput'
-                    }
+                    sh 'pip install -r requirements.txt'
+                    sh 'python manage.py migrate'
+                    sh 'python manage.py collectstatic --noinput'
                 }
             }
         }
@@ -23,9 +21,8 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    docker.image('python:3.9').inside {
-                        sh 'python manage.py test'
-                    }
+                   
+                    sh 'python manage.py test'
                 }
             }
         }
@@ -33,9 +30,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    docker.image('python:3.9').inside {
-                        sh 'python manage.py runserver'
-                    }
+                    sh 'python manage.py runserver'
                 }
             }
         }
