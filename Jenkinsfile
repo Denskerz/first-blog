@@ -31,8 +31,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-		    sh '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
-		    sh 'brew install docker docker-compose'
+		    sh 'sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+		    sh 'sudo brew install docker docker-compose'
                     sh 'docker-compose -f docker-compose.yml up -d && sleep 10'
 		    sh 'docker stop $(docker ps -a -q)'
 		    sh 'docker rm $(docker ps -a -q)'
