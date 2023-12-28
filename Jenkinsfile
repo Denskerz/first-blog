@@ -31,9 +31,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh 'docker-compose -f docker-compose.yml up -d &&\'
-		    sh 'sleep 10 &&\'
-		    sh ' docker stop $(docker ps -a -q) &&'
+                    sh 'docker-compose -f docker-compose.yml up -d &&'
+		    sh 'sleep 10 &&'
+		    sh 'docker stop $(docker ps -a -q) &&'
 		    sh 'docker rm $(docker ps -a -q)'
                 }
             }
