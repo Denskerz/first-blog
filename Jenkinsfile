@@ -32,6 +32,8 @@ pipeline {
             steps {
                 script {
                     sh 'python3 manage.py runserver'
+		    sh 'sleep 10'
+                    sh '^C'
                 }
             }
         }
