@@ -25,7 +25,7 @@ pipeline {
                     echo "Service password is $SERVICE_CREDS_PSW"
 		}
 		echo "\033[35m Checkout was complited. \033[0m"
-      }
+	    }
         }
 	
 	stage('Example Username/Password'){
@@ -36,6 +36,8 @@ pipeline {
 	    steps {
 		echo "Service user is $SERVICE_CREDS_USR"
 		echo "Service password is $SERVICE_CREDS_PSW"
+	    }
+	}
 
         stage('Build') {
             steps {
