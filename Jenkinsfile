@@ -5,10 +5,20 @@ pipeline {
 	ansiColor('xterm')
     }
 
+    environment {
+	def projectName = "first-blog"
+	def imageName = "${projectName}"
+	def dateNow = new Date().format('yyyyMMddHHmm')
+	def buildID = "${env.BUILD_ID}"
+	def jobName = "${env.JOB_NAME}"
+	def jenkinsURL = "${JENKINS_URL}"
+	def urlRepo = "https://github.com/Denskerz/first-blog.git"
+
     stages {
         stage('Checkout') {
             steps {
                 checkout scm
+		echo "\033[35m Project name is ${projectName} from ${urlRepo}. \033[0m"
 		echo "\033[35m Checkout was complited. \033[0m"
       }
         }
@@ -16,7 +26,8 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-		    sh 'pip3 --version'
+		    echo "\033[35m Image name: ${imageName} \033[0m"
+		    echo "\033[35m Running ${buildID} on ${jenkinsURL}... \033[0m"
                     sh 'pip3 install -r requirements.txt'
                     sh 'python3 manage.py migrate'
                     sh 'python3 manage.py collectstatic --noinput'
@@ -38,7 +49,7 @@ pipeline {
             steps {
                 script {
                     sh 'docker-compose -f docker-compose.yml up -d && sleep 10'
-		    echo "\033[35m Web-server has been launched for a 10 seconds. \033[0m"
+		    echo "\033[35m Web-server has been launched at ${dateNow} for a 10 seconds. \033[0m"
 		    sh 'docker stop $(docker ps -a -q)'
 		    echo "\033[35m Web-server has been stopped. \033[0m"
 		    sh 'docker rm $(docker ps -a -q)'
