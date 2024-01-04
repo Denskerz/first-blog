@@ -21,8 +21,8 @@ pipeline {
                 checkout scm
 		echo "\033[35m Project name is ${projectName} from ${urlRepo}. \033[0m"
 		withCredentials([usernamePassword(credentialsId: 'example-credentials-id', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-		    echo "Service user is $SERVICE_CREDS_USR"
-                    echo "Service password is $SERVICE_CREDS_PSW"
+		    sh "echo 'Service user is $SERVICE_CREDS_USR'"
+                    sh "echo 'Service password is $SERVICE_CREDS_PSW'"
 		}
 		echo "\033[35m Checkout was complited. \033[0m"
 	    }
