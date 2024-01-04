@@ -13,6 +13,7 @@ pipeline {
 	def jobName = "${env.JOB_NAME}"
 	def jenkinsURL = "${JENKINS_URL}"
 	def urlRepo = "https://github.com/Denskerz/first-blog.git"
+    }
 
     stages {
         stage('Checkout') {
