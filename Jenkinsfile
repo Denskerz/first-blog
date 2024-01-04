@@ -16,6 +16,17 @@ pipeline {
     }
 
     stages {
+	 stage('Init secret information'){
+            environment {
+                SERVICE_CREDS = credentials('example-credentials-id')
+            }
+
+            steps {
+                echo 'Service user is $SERVICE_CREDS_USR'
+                echo 'Service password is $SERVICE_CREDS_PSW'
+            }
+        }
+
         stage('Checkout') {
             steps {
                 checkout scm
@@ -23,17 +34,6 @@ pipeline {
 		echo "\033[35m Checkout was complited. \033[0m"
 	    }
         }
-	
-	stage('Example Username/Password'){
-	    environment {
-		SERVICE_CREDS = credentials('example-credentials-id')
-	    }
-
-	    steps {
-		echo 'Service user is $SERVICE_CREDS_USR'
-		echo 'Service password is $SERVICE_CREDS_PSW'
-	    }
-	}
 
         stage('Build') {
             steps {
