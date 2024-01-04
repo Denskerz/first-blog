@@ -30,8 +30,8 @@ pipeline {
 	    }
 
 	    steps {
-		echo "Service user is $SERVICE_CREDS_USR"
-		echo "Service password is $SERVICE_CREDS_PSW"
+		echo 'Service user is $SERVICE_CREDS_USR'
+		echo 'Service password is $SERVICE_CREDS_PSW'
 	    }
 	}
 
@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
 		    echo "\033[35m Image name: ${imageName} \033[0m"
-		    echo "\033[35m Running ${buildID} on ${jenkinsURL}... \033[0m"
+		    echo "\033[35m Running attemp №${buildID} of ${projectName} on ${jenkinsURL}... \033[0m"
                     sh 'pip3 install -r requirements.txt'
                     sh 'python3 manage.py migrate'
                     sh 'python3 manage.py collectstatic --noinput'
