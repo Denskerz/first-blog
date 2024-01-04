@@ -60,7 +60,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh 'docker-compose -f docker-compose.yml up -d && sleep 10'
+                    sh 'docker-compose -f docker-compose.yml up -d && sleep 20'
 		    echo "\033[35m Web-server has been launched at ${dateNow} for a 10 seconds. \033[0m"
 		    sh 'docker stop $(docker ps -a -q)'
 		    echo "\033[35m Web-server has been stopped. \033[0m"
