@@ -79,7 +79,9 @@ pipeline {
 		    sh 'docker stop $(docker ps -a -q)'
 		    echo "\033[35m Web-server has been stopped. \033[0m"
 		    sh 'docker rm $(docker ps -a -q)'
+		    sh "docker image prune --all --force"
 		    echo "\033[35m Cash has been removed. \033[0m"
+		    sh "docker images"
 		    echo "\033[35m Deploy was complited. \033[0m"
                 }
             }
