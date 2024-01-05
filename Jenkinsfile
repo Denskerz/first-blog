@@ -44,7 +44,7 @@ pipeline {
 		    stage('Build') {
 			echo "\033[35m Image name: ${imageName} \033[0m"
 		        echo "\033[35m Running attemp №${buildID} of ${projectName} on ${jenkinsURL}... \033[0m"
-                        dockerImage = docker.build registry + ".${imageName}:${dateNow}"
+                        dockerImage = docker.build registry + ":${imageName}-${dateNow}"
 			echo "\033[35m Build was complited. \033[0m"
 		    }
 		    stage('Publish'){
