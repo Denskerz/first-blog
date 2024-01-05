@@ -13,6 +13,9 @@ pipeline {
 	def jobName = "${env.JOB_NAME}"
 	def jenkinsURL = "${JENKINS_URL}"
 	def urlRepo = "https://github.com/Denskerz/first-blog.git"
+	registry = "denskerz/work.sberb"
+        registryCredential = 'dockerhub_id'
+	dockerImage = ''    
     }
 
     stages {
@@ -35,15 +38,26 @@ pipeline {
 	    }
         }
 
-        stage('Build') {
+        stage('Working with image') {
             steps {
                 script {
-		    echo "\033[35m Image name: ${imageName} \033[0m"
-		    echo "\033[35m Running attemp №${buildID} of ${projectName} on ${jenkinsURL}... \033[0m"
-                    sh 'pip3 install -r requirements.txt'
-                    sh 'python3 manage.py migrate'
-                    sh 'python3 manage.py collectstatic --noinput'
-		    echo "\033[35m Build was complited. \033[0m"
+		    stage('Build') {
+			echo "\033[35m Image name: ${imageName} \033[0m"
+		        echo "\033[35m Running attemp №${buildID} of ${projectName} on ${jenkinsURL}... \033[0m"
+                        dockerImage = docker.build registry + "${imageName}:${dateNow}"
+			echo "\033[35m Build was complited. \033[0m"
+		    }
+		    stage('Publish'){
+			docker.withRegistry( '', registryCredential ) {
+				dockerImage.push()
+		        }
+			echo "\033[35m Image has been pushed. \033[0m"
+		    }
+		    stage('Cleaning up'){
+			sh "docker image prune --all --force"
+			echo "\033[35m Image has been pruned. \033[0m"
+			sh "docker images"
+		    }
                 }
             }
         }
