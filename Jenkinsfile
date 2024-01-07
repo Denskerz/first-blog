@@ -21,7 +21,7 @@ pipeline {
     stages {
 	 stage('Init secret information'){
             environment {
-                SERVICE_CREDS = credentials($registryCredential)
+                SERVICE_CREDS = credentials('dockerhub_id')
             }
 
             steps {
