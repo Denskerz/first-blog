@@ -21,7 +21,7 @@ pipeline {
     stages {
 	 stage('Init secret information'){
             environment {
-                SERVICE_CREDS = credentials(${registryCRedential})
+                SERVICE_CREDS = credentials(${registryCredential})
             }
 
             steps {
