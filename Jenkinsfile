@@ -65,7 +65,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh 'python3 manage.py test'
+                    sh 'python manage.py test'
 		    echo "\033[35m Tests were complited. \033[0m"
                 }
             }
