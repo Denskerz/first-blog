@@ -50,6 +50,7 @@ pipeline {
 
 		    if(jobName.matches("(.*)test")){
 			stage('Test') {
+			    sh 'pip install -r requirements.txt'
                             sh 'python manage.py test'
                             echo "\033[35m Tests were complited. \033[0m"
                         }
