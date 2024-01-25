@@ -63,6 +63,6 @@ system_packages:
   - gunicorn
   - postgresql
   - postgresql-server-dev-all
-  - python-pip
+  - python3-pip
  # - python-dev
 #  - python-psycopg2

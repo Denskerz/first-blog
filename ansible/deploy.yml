@@ -12,7 +12,7 @@
       - restart gunicorn
 
     - name: install python packages
-      pip3: requirements={{ install_root }}/{{ project_name }}/requirements.txt
+      pip: requirements={{ install_root }}/{{ project_name }}/requirements.txt
       notify:
       - restart gunicorn
 
