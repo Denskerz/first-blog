@@ -18,7 +18,7 @@ install_root: /srv
 # ├── manage.py
 # └── requirements.txt
 # the correct wsgi_module value would be `hello.wsgi`
-
+wsgi_module: blog.wsgi
 # any directories that need to be added to the PYTHONPATH.
 pythonpath: "{{ install_root }}/{{ project_name }}/blog/apps"
 
