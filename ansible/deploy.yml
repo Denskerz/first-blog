@@ -27,8 +27,8 @@
       notify:
       - restart gunicorn
 
-    - name: make sure gunicorn server is running
-      service: name=gunicorn state=started enabled=yes
+    #- name: make sure gunicorn server is running
+     # service: name=gunicorn state=started enabled=yes
 
   handlers:
     - name: restart gunicorn
