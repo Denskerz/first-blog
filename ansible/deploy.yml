@@ -30,6 +30,6 @@
     #- name: make sure gunicorn server is running
      # service: name=gunicorn state=started enabled=yes
 
-  handlers:
-    - name: restart gunicorn
-      service: name=gunicorn state=restarted
+#  handlers:
+ #   - name: restart gunicorn
+  #    service: name=gunicorn state=restarted
