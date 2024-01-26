@@ -22,10 +22,10 @@
     - name: django collectstatic
       django_manage: command=collectstatic app_path={{ install_root }}/{{ project_name }} pythonpath={{ pythonpath }}
 
-    - name: copy gunicorn config
-      template: src=files/gunicorn.j2 dest=/etc/init/gunicorn.conf
-      notify:
-      - restart gunicorn
+#    - name: copy gunicorn config
+ #     template: src=files/gunicorn.j2 dest=/etc/init/gunicorn.conf
+  #    notify:
+   #   - restart gunicorn
 
     #- name: make sure gunicorn server is running
      # service: name=gunicorn state=started enabled=yes
