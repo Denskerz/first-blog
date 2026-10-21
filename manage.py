@@ -3,6 +3,7 @@
 import os
 import sys
 
+# function to calculate summary
 
 def main():
     """Run administrative tasks."""
